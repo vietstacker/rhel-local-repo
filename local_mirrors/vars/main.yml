@@ -2,9 +2,9 @@
 subscribe_rhn: true
 repo_autosync: false
 
-rhn_subscription_username: hluong@redhat.com
-rhn_subscription_password: Qwer1234@
-rhn_subscription_pool_id: 8a85f9996cbfe5be016d1c339d8f3ac2
+rhn_subscription_username: <subscription_name>@redhat.com
+rhn_subscription_password: <password>
+rhn_subscription_pool_id: <poolID>
 
 mirrors:
   - name: rhel1.repo
@@ -26,4 +26,4 @@ nginx_vhosts:
 nginx_remove_default_vhost: true
 
 # Provide the IP address where http server listening on
-mirror_ip_address: '192.168.56.112'
+mirror_ip_address: <IP_ADDRESS>
