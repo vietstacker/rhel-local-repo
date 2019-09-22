@@ -3,9 +3,9 @@
 
 - Provide the subscription infomation to be used to register and download necessary packages:
 
-rhn_subscription_username: <username>
-rhn_subscription_password: <password>
-rhn_subscription_pool_id: <poolID>
+   rhn_subscription_username: <username>
+   rhn_subscription_password: <password>
+   rhn_subscription_pool_id: <poolID>
 
 - Provide the necessary packages that will be downloaded: Check example_repo/example.yml for more information
 
