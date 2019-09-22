@@ -1,0 +1,19 @@
+- name: Create a generic mirror with all repos
+  shell: "reposync --gpgcheck -l -n -p /var/www/mirrors/general_mirror --downloadcomps --download-metadata > /dev/null"
+  tags:
+    - sync_mirror
+
+- name: Create folder for the mirror
+  file:
+    path: "/var/www/mirrors/{{ item['folder'] }}"
+    state: directory
+    mode: 0755
+  with_items: "{{ mirrors }}"
+
+- name: Create symlink for mirrors
+  file:
+    src: "/var/www/mirrors/general_mirror/"
+    dest: "/var/www/mirrors/{{ item['folder'] }}"
+    state: link
+    force: true
+  with_items: "{{ mirrors }}"

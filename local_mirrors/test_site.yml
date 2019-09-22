@@ -2,20 +2,25 @@
 # site.yml
 ---
 
-- hosts: rhel_mirrors
+- hosts: local_mirrors
   become: true
   vars_files:
     - "./vars/main.yml"
-    - ~/.ansible/vars/rhel_local_mirrors_vars.yml
-  vars:
-    sudo_defaults:
-      - defaults: '!requiretty'
+  roles:
+    - role: geerlingguy.nginx
+      tags:
+        - install_nginx
   tasks:
-    - include: test_rhel_register.yml
-      when: subscribe_rhn|bool == True
+    - include_tasks: test_rhel_register.yml
       tags:
         - rhel_register
 
-    - include: test_prepare_system.yml
+    - include_tasks: test_prepare_system.yml
       tags:
         - prepare_system
+    - include_tasks: test_create_mirror_repos.yml
+      tags:
+        - create_mirrors
+    - include_tasks: test_create_local_repos.yml
+      tags:
+        - create_local

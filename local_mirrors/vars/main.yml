@@ -1,19 +1,21 @@
 # register the system?
 subscribe_rhn: true
 repo_autosync: false
-crontab_day: '*'
-crontab_hour: '*'
-crontab_minute: '*'
-crontab_month: '*'
-crontab_weekday: '*'
+
+rhn_subscription_username: hluong@redhat.com
+rhn_subscription_password: Qwer1234@
+rhn_subscription_pool_id: 8a85f9996cbfe5be016d1c339d8f3ac2
+
 mirrors:
-  - name: rhel.repo
-    folder: rhel_repo
+  - name: rhel1.repo
+    folder: rhel1_repo
     items:
         - rhel-7-server-rpms
         - rhel-7-server-extras-rpms
+  - name: rhel2.repo
+    folder: rhel2_repo
+    items:
         - rhel-7-server-rh-common-rpms
-        - rhel-ha-for-rhel-7-server-rpms
 nginx_vhosts:
   - listen: "80 default_server"
     server_name: "_"
@@ -22,4 +24,6 @@ nginx_vhosts:
     extra_parameters: |
         autoindex on;
 nginx_remove_default_vhost: true
-mirror_ip_address: ''
+
+# Provide the IP address where http server listening on
+mirror_ip_address: '192.168.56.112'

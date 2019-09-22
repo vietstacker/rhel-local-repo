@@ -1,0 +1,7 @@
+- name: Create repositories from local mirror
+  shell: "for DIR in `find /var/www/mirrors/{{ item['folder'] }}/  -maxdepth 1 -mindepth 1 -type d`; do echo $DIR; cd $DIR; createrepo -v $DIR -g comps.xml; done; > /dev/null"
+  with_items: "{{ mirrors }}"
+
+- name: Execute repo creation
+  shell: "./scripts/test_create_repo.sh {{ item['folder'] }} {{ item['name'] }} {{ item['items']|join(',') }} '{{ mirror_ip_address }}'"
+  with_items: "{{ mirrors }}"

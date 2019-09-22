@@ -30,7 +30,6 @@
       with_items:
           - http
           - https
-      when: firewalld_service_status.stdout == 'active'
 
     - name: Create directory to contain mirrors
       file:
